@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.avatorsinc.volumefix.app-mergeDebugResources-35:/layout/volume_card.xml",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/volume_card.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-mergeDebugResources-35:/layout/fragment_volume_slider.xml",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/fragment_volume_slider.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-mergeDebugResources-35:/layout/activity_main.xml",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/activity_main.xml"
+    }
+]

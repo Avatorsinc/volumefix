@@ -1,0 +1,5 @@
+com.avatorsinc.volumefix.test.app-androidTest-0 D:\volumefixproject\volumefix\app\build\generated\res\resValues\androidTest\debug
+com.avatorsinc.volumefix.test.app-androidTest-1 D:\volumefixproject\volumefix\app\build\generated\res\rs\androidTest\debug
+com.avatorsinc.volumefix.test.app-mergeDebugAndroidTestResources-2 D:\volumefixproject\volumefix\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.avatorsinc.volumefix.test.app-mergeDebugAndroidTestResources-3 D:\volumefixproject\volumefix\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.avatorsinc.volumefix.test.app-merged_res-4 D:\volumefixproject\volumefix\app\build\intermediates\merged_res\debugAndroidTest

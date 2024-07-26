@@ -1,0 +1,4 @@
+#Fri Jul 26 14:13:31 CEST 2024
+base.0=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

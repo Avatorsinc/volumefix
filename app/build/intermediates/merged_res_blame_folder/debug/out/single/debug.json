@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-anydpi-v26_ic_volumefix.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-anydpi-v26/ic_volumefix.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-xxxhdpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-xxxhdpi/ic_volumefix_foreground.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-ldpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-ldpi/ic_volumefix_foreground.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xxhdpi_ic_volumefix.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xxhdpi/ic_volumefix.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xxxhdpi_ic_volumefix.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xxxhdpi/ic_volumefix.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/layout_volume_card.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/volume_card.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-xxhdpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-xxhdpi/ic_volumefix_foreground.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/layout_activity_main.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xhdpi_ic_volumefix.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xhdpi/ic_volumefix.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-anydpi-v26_ic_volumefix_round.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-anydpi-v26/ic_volumefix_round.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xxhdpi_ic_volumefix_round.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xxhdpi/ic_volumefix_round.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/menu_options.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/menu/options.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-hdpi_ic_volumefix_round.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-hdpi/ic_volumefix_round.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xxxhdpi_ic_volumefix_round.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xxxhdpi/ic_volumefix_round.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/raw_license_apache_2_0.txt.flat",
+        "source": "com.avatorsinc.volumefix.app-debug-30:/raw/license_apache_2_0.txt"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-hdpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-hdpi/ic_volumefix_foreground.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-anydpi-v21_ic_volumefix_foreground.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-anydpi-v21/ic_volumefix_foreground.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-mdpi_ic_volumefix.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-mdpi/ic_volumefix.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-hdpi_ic_volumefix.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-hdpi/ic_volumefix.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-mdpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-mdpi/ic_volumefix_foreground.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/layout_fragment_volume_slider.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/layout/fragment_volume_slider.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-xhdpi_ic_volumefix_round.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-xhdpi/ic_volumefix_round.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/mipmap-mdpi_ic_volumefix_round.png.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/mipmap-mdpi/ic_volumefix_round.png"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/xml_root_preferences.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/xml/root_preferences.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/navigation_navigation_graph.xml.flat",
+        "source": "com.avatorsinc.volumefix.app-main-38:/navigation/navigation_graph.xml"
+    },
+    {
+        "merged": "com.avatorsinc.volumefix.app-merged_res-36:/drawable-xhdpi_ic_volumefix_foreground.png.flat",
+        "source": "com.avatorsinc.volumefix.app-pngs-31:/drawable-xhdpi/ic_volumefix_foreground.png"
+    }
+]

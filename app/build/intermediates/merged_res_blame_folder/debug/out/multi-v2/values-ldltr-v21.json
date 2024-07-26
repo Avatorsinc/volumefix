@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.avatorsinc.volumefix.app-mergeDebugResources-34:/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Avato\\.gradle\\caches\\transforms-3\\56e0b55beaf4e06f12a121d1a622f5d9\\transformed\\appcompat-1.4.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

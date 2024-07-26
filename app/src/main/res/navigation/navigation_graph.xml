@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/volumeSliderFragment">
+
+    <include app:graph="@navigation/aboutlibs_navigation" />
+
+    <fragment
+        android:id="@+id/volumeSliderFragment"
+        android:name="com.avatorsinc.volumefix.ui.VolumeSliderFragment"
+        android:label="VolumeSliderFragment">
+        <action
+            android:id="@+id/action_x_to_about_libs"
+            app:destination="@id/about_libraries" />
+        <action
+          android:id="@+id/action_sliders_to_settings"
+          app:destination="@id/settingsFragment" />
+    </fragment>
+
+    <fragment
+      android:id="@+id/settingsFragment"
+      android:name="com.avatorsinc.volumefix.ui.SettingsFragment"
+      android:label="SettingsFragment" />
+
+</navigation>
