@@ -3508,6 +3508,7 @@ int string define_plu_org_jetbrains_kotlin__kotlin_stdlib_jdk8 0x7f11007e
 int string define_plu_org_jetbrains_kotlinx__kotlinx_coroutines_android 0x7f11007f
 int string define_plu_org_jetbrains_kotlinx__kotlinx_coroutines_core 0x7f110080
 int string dialog_allow 0x7f110081
+int string dialog_deny 0x7f110470
 int string dialog_policy_access_title 0x7f110082
 int string enter_password 0x7f110083
 int string error_icon_content_description 0x7f110084
