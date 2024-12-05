@@ -11,8 +11,8 @@ android {
 
     defaultConfig {
         applicationId "com.avatorsinc.volumefix"
-        minSdkVersion 16
-        targetSdkVersion 31
+        minSdkVersion 23
+        targetSdkVersion 33
         versionCode 8
         versionName "2.0.0"
 

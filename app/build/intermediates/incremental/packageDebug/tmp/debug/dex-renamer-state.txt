@@ -1,4 +1,19 @@
-#Fri Jul 26 14:13:31 CEST 2024
-base.0=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Dec 05 21:02:17 CET 2024
+base.0=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.3=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.4=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+base.5=D\:\\volumefixproject\\volumefix\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
 path.0=classes.dex
+path.1=0/classes.dex
+path.2=10/classes.dex
+path.3=2/classes.dex
+path.4=3/classes.dex
+path.5=8/classes.dex
 renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex
+renamed.3=classes4.dex
+renamed.4=classes5.dex
+renamed.5=classes6.dex

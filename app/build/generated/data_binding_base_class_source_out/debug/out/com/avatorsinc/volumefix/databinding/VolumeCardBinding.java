@@ -9,10 +9,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.avatorsinc.volumefix.R;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -28,10 +28,10 @@ public final class VolumeCardBinding implements ViewBinding {
   public final SeekBar seekBar;
 
   @NonNull
-  public final SwitchCompat switchButton;
+  public final SwitchMaterial switchButton;
 
   private VolumeCardBinding(@NonNull LinearLayout rootView, @NonNull TextView mediaTextView,
-      @NonNull SeekBar seekBar, @NonNull SwitchCompat switchButton) {
+      @NonNull SeekBar seekBar, @NonNull SwitchMaterial switchButton) {
     this.rootView = rootView;
     this.mediaTextView = mediaTextView;
     this.seekBar = seekBar;
@@ -78,7 +78,7 @@ public final class VolumeCardBinding implements ViewBinding {
       }
 
       id = R.id.switchButton;
-      SwitchCompat switchButton = ViewBindings.findChildViewById(rootView, id);
+      SwitchMaterial switchButton = ViewBindings.findChildViewById(rootView, id);
       if (switchButton == null) {
         break missingId;
       }

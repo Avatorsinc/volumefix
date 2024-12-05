@@ -17,13 +17,14 @@ import android.os.Handler
 import android.os.IBinder
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.annotation.WorkerThread
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.avatorsinc.volumefix.R
 import com.avatorsinc.volumefix.Volume
 import com.avatorsinc.volumefix.ui.MainActivity
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.util.Timer
 import java.util.TimerTask
 import kotlin.collections.HashMap
@@ -38,22 +39,11 @@ class VolumeService : Service() {
         const val APP_SHARED_PREFERENCES = "volumefix_shared_preferences"
         const val LOCKS_KEY = "locks_key"
 
-        const val VOLUME_MUSIC_SPEAKER_SETTING = "volume_music_speaker"
-        const val VOLUME_MUSIC_HEADSET_SETTING = "volume_music_headset"
-        const val VOLUME_MUSIC_BT_SETTING = "volume_music_bt_a2dp"
-        const val VOLUME_ALARM_SETTING = "volume_alarm"
-        const val VOLUME_ALARM_SPEAKER_SETTING = "volume_alarm_speaker"
-        const val VOLUME_RING_SPEAKER_SETTING = "volume_ring_speaker"
-        const val VOLUME_RING_EARPIECE_SETTING = "volume_ring_earpiece"
-        const val VOLUME_RING_BT_SETTING = "volume_ring_bt_ad2p"
-        const val VOLUME_VOICE_EARPIECE_SETTING = "volume_voice_earpiece"
-        const val VOLUME_VOICE_HEADSET_SETTING = "volume_voice_headset"
-        const val VOLUME_VOICE_BT_SETTING = "volume_voice_bt_a2dp"
-
         const val MODE_RINGER_SETTING = "mode_ringer"
     }
 
     private lateinit var mAudioManager: AudioManager
+    private lateinit var mNotificationManager: NotificationManager
     private lateinit var mVolumeProvider: VolumeProvider
     private var mVolumeListenerHandler: Handler? = null
     private var mVolumeListener: (() -> Unit)? = null
@@ -67,14 +57,18 @@ class VolumeService : Service() {
         super.onCreate()
 
         mAudioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         mVolumeProvider = VolumeProvider(this)
 
         loadPreferences()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            mMode = Settings.Global.getInt(contentResolver, MODE_RINGER_SETTING)
+            mMode = Settings.Global.getInt(contentResolver, MODE_RINGER_SETTING, AudioManager.RINGER_MODE_NORMAL)
         }
 
+        setupNotificationManager()
+        blockDoNotDisturb()
+        monitorAndBlockDND()
         registerObservers()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -128,7 +122,7 @@ class VolumeService : Service() {
     fun addLock(stream: Int, volume: Int) {
         mVolumeLock[stream] = volume
         savePreferences()
-        startLocking() // Ensure locking starts as soon as a lock is added
+        startLocking()
     }
 
     @Synchronized
@@ -173,6 +167,51 @@ class VolumeService : Service() {
         }
     }
 
+    private fun setupNotificationManager() {
+        if (!mNotificationManager.isNotificationPolicyAccessGranted) {
+            requestNotificationPolicyAccess()
+        }
+    }
+
+    private fun requestNotificationPolicyAccess() {
+        val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
+
+    private fun blockDoNotDisturb() {
+        try {
+            if (mNotificationManager.isNotificationPolicyAccessGranted) {
+                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                Log.d("VolumeService", "Do Not Disturb mode disabled")
+            } else {
+                Log.e("VolumeService", "Notification Policy Access not granted. Requesting access...")
+                requestNotificationPolicyAccess()
+            }
+        } catch (e: SecurityException) {
+            Log.e("VolumeService", "Failed to disable Do Not Disturb mode: ${e.message}")
+        } catch (e: Exception) {
+            Log.e("VolumeService", "Unexpected error: ${e.message}")
+        }
+    }
+
+    @Synchronized
+    private fun monitorAndBlockDND() {
+        Timer().scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                try {
+                    if (mNotificationManager.isNotificationPolicyAccessGranted &&
+                        mNotificationManager.currentInterruptionFilter != NotificationManager.INTERRUPTION_FILTER_ALL) {
+                        Log.d("VolumeService", "Detected DND mode. Disabling...")
+                        mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                    }
+                } catch (e: Exception) {
+                    Log.e("VolumeService", "Error in monitorAndBlockDND: ${e.message}")
+                }
+            }
+        }, 0, 1000) // Check every second
+    }
+
     private val mVolumeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
         override fun onChange(selfChange: Boolean) {
             super.onChange(selfChange)
@@ -187,51 +226,17 @@ class VolumeService : Service() {
         }
     }
 
-    private val mModeObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
-        override fun onChange(selfChange: Boolean) {
-            super.onChange(selfChange)
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                mMode = Settings.Global.getInt(contentResolver, MODE_RINGER_SETTING)
-            }
-
-            mModeListener?.invoke()
-        }
-    }
-
-    private fun fetchUri(setting: String): Uri = Settings.System.getUriFor(setting)
-
     private fun registerObservers() {
-        registerObserver(VOLUME_MUSIC_SPEAKER_SETTING)
-        registerObserver(VOLUME_MUSIC_HEADSET_SETTING)
-        registerObserver(VOLUME_MUSIC_BT_SETTING)
-
-        registerObserver(VOLUME_ALARM_SETTING)
-        registerObserver(VOLUME_ALARM_SPEAKER_SETTING)
-
-        registerObserver(VOLUME_RING_SPEAKER_SETTING)
-        registerObserver(VOLUME_RING_EARPIECE_SETTING)
-        registerObserver(VOLUME_RING_BT_SETTING)
-
-        registerObserver(VOLUME_VOICE_EARPIECE_SETTING)
-        registerObserver(VOLUME_VOICE_HEADSET_SETTING)
-        registerObserver(VOLUME_VOICE_BT_SETTING)
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             contentResolver.registerContentObserver(
-                Settings.Global.getUriFor(MODE_RINGER_SETTING), true, mModeObserver
+                Settings.Global.getUriFor(MODE_RINGER_SETTING), true, mVolumeObserver
             )
         }
-    }
-
-    private fun registerObserver(setting: String) {
-        contentResolver.registerContentObserver(fetchUri(setting), true, mVolumeObserver)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     @Synchronized
     fun tryShowNotification() {
-
         if (mVolumeLock.size == 0) {
             return
         }

@@ -12,6 +12,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.provider.Settings
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
@@ -34,44 +35,39 @@ class MainActivity : AppCompatActivity() {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION)
         fiftyPercentVolume = maxVolume / 2
 
-        // Set the notification volume to 50%
-        audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, fiftyPercentVolume, 0)
+        // Check and request Do Not Disturb access
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkDoNotDisturbPermission()
+        }
 
         // Start and bind to the VolumeService to lock the volume
         val volumeServiceIntent = Intent(this, VolumeService::class.java)
         startService(volumeServiceIntent)
         bindService(volumeServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
-
-        // Set and lock the notification volume
-        setAndLockVolume()
-    }
-
-    /*override fun onResume() {
-        super.onResume()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkDoNotDisturbPermission()
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun checkDoNotDisturbPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            if (!notificationManager.isNotificationPolicyAccessGranted) {
-                PolicyAccessDialog().show(supportFragmentManager, PolicyAccessDialog.TAG)
-            }
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (!notificationManager.isNotificationPolicyAccessGranted) {
+            // Show a dialog to request the permission
+            PolicyAccessDialog().show(supportFragmentManager, PolicyAccessDialog.TAG)
+        } else {
+            // Permission is granted; set and lock the volume
+            setAndLockVolume()
         }
-    }*/
+    }
 
     private fun setAndLockVolume() {
-        val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION)
-        fiftyPercentVolume = maxVolume / 2
-        audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, fiftyPercentVolume, AudioManager.FLAG_SHOW_UI)
+        try {
+            val audioManager = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            audioManager.setStreamVolume(AudioManager.STREAM_NOTIFICATION, fiftyPercentVolume, AudioManager.FLAG_SHOW_UI)
 
-        val volumeServiceIntent = Intent(this, VolumeService::class.java)
-        startService(volumeServiceIntent)
-        bindService(volumeServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
+            volumeService?.addLock(AudioManager.STREAM_NOTIFICATION, fiftyPercentVolume)
+            Log.d("MainActivity", "Volume locked to 50%")
+        } catch (e: SecurityException) {
+            Log.e("MainActivity", "Failed to set volume: ${e.message}")
+        }
     }
 
     class PolicyAccessDialog : DialogFragment() {
@@ -89,6 +85,9 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                     }
                 }
+                .setNegativeButton(context.getString(R.string.dialog_deny)) { _, _ ->
+                    Log.e(TAG, "User denied Notification Policy Access")
+                }
                 .create()
         }
     }
@@ -103,5 +102,11 @@ class MainActivity : AppCompatActivity() {
         override fun onServiceDisconnected(name: ComponentName?) {
             volumeService = null
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(serviceConnection)
+        volumeService = null
     }
 }
