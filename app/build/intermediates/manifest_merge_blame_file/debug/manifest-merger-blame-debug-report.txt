@@ -2,7 +2,7 @@
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.avatorsinc.volumefix"
 4    android:versionCode="8"
-5    android:versionName="2.0.0" >
+5    android:versionName="2.1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="23"
@@ -40,72 +40,71 @@
 24-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:13:9-55
 25        android:supportsRtl="true"
 25-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:14:9-35
-26        android:testOnly="true"
-27        android:theme="@style/Theme.Volume" >
-27-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:15:9-44
-28        <activity
-28-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:16:9-25:20
-29            android:name="com.avatorsinc.volumefix.ui.MainActivity"
-29-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:17:13-44
-30            android:exported="true"
-30-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:19:13-36
-31            android:launchMode="singleTop" >
-31-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:18:13-43
-32            <intent-filter>
-32-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:20:13-24:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:21:17-69
-33-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:21:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:23:17-77
-35-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:23:27-74
-36            </intent-filter>
-37        </activity>
-38
-39        <service android:name="com.avatorsinc.volumefix.service.VolumeService" />
-39-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:27:9-58
-39-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:27:18-55
-40
-41        <receiver
-41-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:29:9-35:20
-42            android:name="com.avatorsinc.volumefix.BootReceiver"
-42-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:30:13-41
-43            android:exported="true" >
-43-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:31:13-36
-44            <intent-filter>
-44-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:32:13-34:29
-45                <action android:name="android.intent.action.BOOT_COMPLETED" />
-45-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:33:17-78
-45-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:33:25-76
-46            </intent-filter>
-47        </receiver>
-48
-49        <activity android:name="com.mikepenz.aboutlibraries.ui.LibsActivity" />
-49-->[com.mikepenz:aboutlibraries:8.9.0] C:\Users\Avato\.gradle\caches\transforms-3\4b622131a4ad96abdf313ef9909f5742\transformed\aboutlibraries-8.9.0\AndroidManifest.xml:10:9-80
-49-->[com.mikepenz:aboutlibraries:8.9.0] C:\Users\Avato\.gradle\caches\transforms-3\4b622131a4ad96abdf313ef9909f5742\transformed\aboutlibraries-8.9.0\AndroidManifest.xml:10:19-77
-50
-51        <provider
-51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
-52            android:name="androidx.startup.InitializationProvider"
-52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
-53            android:authorities="com.avatorsinc.volumefix.androidx-startup"
-53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
-54            android:exported="false" >
-54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
-55            <meta-data
-55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
-56                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
-57                android:value="androidx.startup" />
-57-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
-58            <meta-data
-58-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
-59                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
-60                android:value="androidx.startup" />
-60-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
-61        </provider>
-62    </application>
-63
-64</manifest>
+26        android:theme="@style/Theme.Volume" >
+26-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:15:9-44
+27        <activity
+27-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:16:9-25:20
+28            android:name="com.avatorsinc.volumefix.ui.MainActivity"
+28-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:17:13-44
+29            android:exported="true"
+29-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:19:13-36
+30            android:launchMode="singleTop" >
+30-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:18:13-43
+31            <intent-filter>
+31-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:20:13-24:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:21:17-69
+32-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:21:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:23:17-77
+34-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:23:27-74
+35            </intent-filter>
+36        </activity>
+37
+38        <service android:name="com.avatorsinc.volumefix.service.VolumeService" />
+38-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:27:9-58
+38-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:27:18-55
+39
+40        <receiver
+40-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:29:9-35:20
+41            android:name="com.avatorsinc.volumefix.BootReceiver"
+41-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:30:13-41
+42            android:exported="true" >
+42-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:31:13-36
+43            <intent-filter>
+43-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:32:13-34:29
+44                <action android:name="android.intent.action.BOOT_COMPLETED" />
+44-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:33:17-78
+44-->D:\volumefixproject\volumefix\app\src\main\AndroidManifest.xml:33:25-76
+45            </intent-filter>
+46        </receiver>
+47
+48        <activity android:name="com.mikepenz.aboutlibraries.ui.LibsActivity" />
+48-->[com.mikepenz:aboutlibraries:8.9.0] C:\Users\Avato\.gradle\caches\transforms-3\4b622131a4ad96abdf313ef9909f5742\transformed\aboutlibraries-8.9.0\AndroidManifest.xml:10:9-80
+48-->[com.mikepenz:aboutlibraries:8.9.0] C:\Users\Avato\.gradle\caches\transforms-3\4b622131a4ad96abdf313ef9909f5742\transformed\aboutlibraries-8.9.0\AndroidManifest.xml:10:19-77
+49
+50        <provider
+50-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+51            android:name="androidx.startup.InitializationProvider"
+51-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:27:13-67
+52            android:authorities="com.avatorsinc.volumefix.androidx-startup"
+52-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:28:13-68
+53            android:exported="false" >
+53-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:29:13-37
+54            <meta-data
+54-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+55                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+55-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:32:17-75
+56                android:value="androidx.startup" />
+56-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Avato\.gradle\caches\transforms-3\17bb3e2af8ffa82960cf59466238a5cf\transformed\emoji2-1.0.0\AndroidManifest.xml:33:17-49
+57            <meta-data
+57-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+58                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+59                android:value="androidx.startup" />
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\Avato\.gradle\caches\transforms-3\767b09b80a3854f516e29f8b20a6a027\transformed\lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+60        </provider>
+61    </application>
+62
+63</manifest>

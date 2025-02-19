@@ -20,7 +20,6 @@ class VolumeProvider(private val mContext: Context) {
                 fetchMaxVolume(AudioManager.STREAM_MUSIC),
                 false
             ),
-
             Volume(
                 resource.getString(R.string.call_title),
                 AudioManager.STREAM_VOICE_CALL,
@@ -29,7 +28,6 @@ class VolumeProvider(private val mContext: Context) {
                 fetchMaxVolume(AudioManager.STREAM_VOICE_CALL),
                 false
             ),
-
             Volume(
                 resource.getString(R.string.notification_title),
                 AudioManager.STREAM_NOTIFICATION,
@@ -38,7 +36,6 @@ class VolumeProvider(private val mContext: Context) {
                 fetchMaxVolume(AudioManager.STREAM_NOTIFICATION),
                 false
             ),
-
             Volume(
                 resource.getString(R.string.alarm_title),
                 AudioManager.STREAM_ALARM,

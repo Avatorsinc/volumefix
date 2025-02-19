@@ -66,8 +66,20 @@ class VolumeService : Service() {
             mMode = Settings.Global.getInt(contentResolver, MODE_RINGER_SETTING, AudioManager.RINGER_MODE_NORMAL)
         }
 
-        setupNotificationManager()
-        blockDoNotDisturb()
+        // Commented out DND permission handling since MDM grants permission
+        // setupNotificationManager()
+        // blockDoNotDisturb()
+
+        // Instead, forcefully set the interruption filter if access is granted.
+        try {
+            if (mNotificationManager.isNotificationPolicyAccessGranted) {
+                mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+                Log.d("VolumeService", "Do Not Disturb mode disabled (via MDM)")
+            }
+        } catch (e: Exception) {
+            Log.e("VolumeService", "Error disabling DND: ${e.message}")
+        }
+
         monitorAndBlockDND()
         registerObservers()
 
@@ -168,15 +180,17 @@ class VolumeService : Service() {
     }
 
     private fun setupNotificationManager() {
-        if (!mNotificationManager.isNotificationPolicyAccessGranted) {
-            requestNotificationPolicyAccess()
-        }
+        // Commented out: original DND permission check and request removed due to MDM configuration.
+        // if (!mNotificationManager.isNotificationPolicyAccessGranted) {
+        //     requestNotificationPolicyAccess()
+        // }
     }
 
     private fun requestNotificationPolicyAccess() {
-        val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        // Commented out: no need to request permission as it will be granted via MDM.
+        // val intent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+        // intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        // startActivity(intent)
     }
 
     private fun blockDoNotDisturb() {
@@ -185,8 +199,9 @@ class VolumeService : Service() {
                 mNotificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
                 Log.d("VolumeService", "Do Not Disturb mode disabled")
             } else {
-                Log.e("VolumeService", "Notification Policy Access not granted. Requesting access...")
-                requestNotificationPolicyAccess()
+                // Commented out: request removed as permission is managed by MDM.
+                // Log.e("VolumeService", "Notification Policy Access not granted. Requesting access...")
+                // requestNotificationPolicyAccess()
             }
         } catch (e: SecurityException) {
             Log.e("VolumeService", "Failed to disable Do Not Disturb mode: ${e.message}")

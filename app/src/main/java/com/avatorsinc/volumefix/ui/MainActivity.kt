@@ -35,10 +35,8 @@ class MainActivity : AppCompatActivity() {
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION)
         fiftyPercentVolume = maxVolume / 2
 
-        // Check and request Do Not Disturb access
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkDoNotDisturbPermission()
-        }
+        // Since permission will be granted via MDM, we simply set and lock the volume.
+        setAndLockVolume()
 
         // Start and bind to the VolumeService to lock the volume
         val volumeServiceIntent = Intent(this, VolumeService::class.java)
@@ -46,17 +44,18 @@ class MainActivity : AppCompatActivity() {
         bindService(volumeServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
-    private fun checkDoNotDisturbPermission() {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (!notificationManager.isNotificationPolicyAccessGranted) {
-            // Show a dialog to request the permission
-            PolicyAccessDialog().show(supportFragmentManager, PolicyAccessDialog.TAG)
-        } else {
-            // Permission is granted; set and lock the volume
-            setAndLockVolume()
-        }
-    }
+    // Commented out the DND permission check and dialog
+    // @RequiresApi(Build.VERSION_CODES.M)
+    // private fun checkDoNotDisturbPermission() {
+    //     val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    //     if (!notificationManager.isNotificationPolicyAccessGranted) {
+    //         // Show a dialog to request the permission
+    //         PolicyAccessDialog().show(supportFragmentManager, PolicyAccessDialog.TAG)
+    //     } else {
+    //         // Permission is granted; set and lock the volume
+    //         setAndLockVolume()
+    //     }
+    // }
 
     private fun setAndLockVolume() {
         try {
@@ -70,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // PolicyAccessDialog remains in the code, but it is now unused.
     class PolicyAccessDialog : DialogFragment() {
         companion object {
             const val TAG = "PolicyAccessDialog"
